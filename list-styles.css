@@ -1,0 +1,13 @@
+.removed {
+    text-decoration: line-through;
+    opacity: 0.6; /* Real browsers */
+    filter: alpha(opacity = 60); /* MSIE */
+}
+.other-person {
+    color: #2564d9;
+}
+.person {
+    background-color: #79c0ff;
+    color: black;
+    padding: 3px;
+}

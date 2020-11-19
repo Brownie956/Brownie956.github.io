@@ -1,49 +1,21 @@
 <html>
 	<head>
 		<title>Wish list</title>
-		<style>
-			.removed {
-				text-decoration: line-through;
-				opacity: 0.6; /* Real browsers */
-				filter: alpha(opacity = 60); /* MSIE */
-			}
-			.other-person {
-				color: #2564d9;
-			}
-			.person {
-				background-color: #79c0ff;
-				color: black;
-				padding: 3px;
-			}
-		</style>
+		<link rel="stylesheet" href="list-styles.css">
 	</head>
 	<body>
+		<h1>Wish list</h1>
 		<ul>
-			<li>Tech
-				<ul>
-					<li class="removed">Phone (Pixel 4a)</li>
-					<li class="removed">GoPro Hero 8 Black</li>
-					<li class="removed">GoPro battery</li>
-				</ul>
-			</li>
 			<li>DIY
 				<ul>
 					<li>Knee pads</li>
 					<li>Electric planer</li>
 					<li class="other-person">16oz claw hammer <span class="person">Mum</span></li>
-					<li class="other-person removed">Flat screwdriver bits <span class="person">Mum</span></li>
-					<li class="removed other-person">Spirit Level <span class="person">Mum</span></li>
-					<li class="removed">Circular saw</li>
-					<li class="removed">Clamps</li>
 				</ul>
 			</li>
 			<li>Kitchen
 				<ul>
 					<li>Large mixing bowl</li>
-					<li class="removed">Magnetic knife rack</li>
-					<li class="removed">Long handle tea spoons</li>
-					<li class="other-person removed">Masher <span class="person">Mum</span></li>
-					<li class="removed">Electric whisk</li>
 				</ul>
 			</li>
 			<li>Other
@@ -53,6 +25,32 @@
 							Icebreaker Everyday 175 long sleeve - red
 						</a>
 					</li>
+				</ul>
+			</li>
+		</ul>
+		<h1>Removed</h1>
+		<ul class="removed">
+			<li>Tech
+				<ul>
+					<li>Phone (Pixel 4a)</li>
+					<li>GoPro Hero 8 Black</li>
+					<li>GoPro battery</li>
+				</ul>
+			</li>
+			<li>DIY
+				<ul>
+					<li class="other-person">Flat screwdriver bits <span class="person">Mum</span></li>
+					<li class="other-person">Spirit Level <span class="person">Mum</span></li>
+					<li>Circular saw</li>
+					<li>Clamps</li>
+				</ul>
+			</li>
+			<li>Kitchen
+				<ul>
+					<li>Magnetic knife rack</li>
+					<li>Long handle tea spoons</li>
+					<li class="other-person">Masher <span class="person">Mum</span></li>
+					<li>Electric whisk</li>
 				</ul>
 			</li>
 		</ul>
