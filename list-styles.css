@@ -6,3 +6,6 @@
     color: black;
     padding: 3px;
 }
+a:visited {
+    color: blue;
+}
