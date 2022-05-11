@@ -11,5 +11,6 @@ a:visited {
 }
 
 .links {
-    border-bottom: 3px;
+    border-bottom: 1px;
+    border-style: solid;
 }
