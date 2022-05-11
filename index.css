@@ -10,7 +10,8 @@ a:visited {
     color: #3879d9;
 }
 
-.links {
-    border-bottom: 1px;
+div.links {
+    border-width: 0px 0px 1px 0px;
     border-style: solid;
+    padding-bottom: 10px;
 }
