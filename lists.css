@@ -1,0 +1,11 @@
+.other-person {
+    color: #0b802e;
+}
+.person {
+    background-color: #79c0ff;
+    color: black;
+    padding: 3px;
+}
+a:visited {
+    color: #3879d9;
+}

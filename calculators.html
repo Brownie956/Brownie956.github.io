@@ -2,17 +2,32 @@
 <html lang="en">
     <head>
 		<title>Calculators</title>
-		<link rel="stylesheet" href="calculators.css">
+		<link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="calculators.css">
+        <script src="calculators.js"></script> 
     </head>
     <body>
-        <div id="mortgage_calculator" class="calculator">
-            <h1>Mortgage calculator</h1>
-            <p>Add params</p>
-        </div>
+        <div class="links">
+			<h1>Links</h1>
+			<a href="calculators.html">Calculators</a>
+		</div>
 
-        <div id="student_calculator" class="calculator">
-            <h1>Student loan calculator</h1>
-            <p>Add params</p>
+        <div class="calculators">
+            <div id="mortgage_calculator" class="calculator">
+                <h1>Mortgage calculator</h1>
+
+                <form onsubmit="exampler()">
+                    Enter value: <input id="value" type="number">
+                    <input type="submit">
+                </form>
+                
+                <p id="mortgage_output"></p>
+            </div>
+
+            <div id="student_calculator" class="calculator">
+                <h1>Student loan calculator</h1>
+                <p>Add params</p>
+            </div>
         </div>
     </body>
 </html>
