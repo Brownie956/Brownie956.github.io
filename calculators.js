@@ -33,7 +33,7 @@ function tailRecSL(value, runningTotal = 0) {
 
 let totalInterest = 0
 let mortgageValues = []
-function tailRecMortgage(value, runningTotal = 0, sidePot = 11000, monthlyPayment = 1923.06, sidePotPayment = 300) {
+function tailRecMortgage(value, runningTotal = 0, sidePot = 11000, monthlyPayment = 1923.06, sidePotPayment = 300, rateOverride = -1) {
     mortgageMonthValues = {}
     mortgageMonthValues['month'] = runningTotal;
     value = (runningTotal % 12 == 0 && runningTotal > 0) ? value - 7500 : value
@@ -41,7 +41,12 @@ function tailRecMortgage(value, runningTotal = 0, sidePot = 11000, monthlyPaymen
         return runningTotal;
     }
     else {
-        const rate = runningTotal > 4 ? 0.0129 : 0.0262
+        let rate;
+        if(rateOverride >= 0) {
+            rate = rateOverride / 100;
+        } else {
+            rate = runningTotal > 4 ? 0.0129 : 0.0262;
+        }
         const interest = (value * rate) / 12; //~2.62% atm
         totalInterest += interest;
         mortgageMonthValues['rate'] = rate;
@@ -56,7 +61,8 @@ function tailRecMortgage(value, runningTotal = 0, sidePot = 11000, monthlyPaymen
             runningTotal + 1,
             sidePot + sidePotPayment,
             monthlyPayment,
-            sidePotPayment
+            sidePotPayment,
+            rateOverride
         )
     }
 }
@@ -86,6 +92,8 @@ function calculateMortgage() {
     let val = document.getElementById('value').value;
     let mortgagePaymentsVal = parseFloat(document.getElementById('mortgagePaymentValue').value);
     let sidePotPaymentsVal = parseFloat(document.getElementById('sidePotPaymentValue').value);
+    let rateOverrideVal = document.getElementById('rateValue').value;
+    rateOverrideVal = rateOverrideVal != "" && !isNaN(rateOverrideVal) ? parseFloat(rateOverrideVal) : -1;
     totalInterest = 0;
     mortgageValues = [];
 
@@ -94,7 +102,7 @@ function calculateMortgage() {
         currency: 'GBP'
     });
 
-    const total = tailRecMortgage(val, 0, 11000, mortgagePaymentsVal, sidePotPaymentsVal);
+    const total = tailRecMortgage(val, 0, 11000, mortgagePaymentsVal, sidePotPaymentsVal, rateOverrideVal);
 
     let i;
     for (i = 0; i < mortgageValues.length; i++) {
@@ -114,9 +122,13 @@ function calculateMortgage() {
     outputDiv.appendChild(createNewParaLine("Total interest: " + formatter.format(totalInterest)));
 }
 
-function validate(input) {
+function validate(input, resetOnFail = true, clearOnFail = false) {
     if(isNaN(input.value) || input.value == "") {
-        input.value = "0.00";
+        if(resetOnFail && !clearOnFail) {
+            input.value = "0.00";
+        } else {
+            input.value = "";
+        }
     } else {
         input.value = parseFloat(input.value).toFixed(2);
     }

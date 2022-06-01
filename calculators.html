@@ -25,10 +25,11 @@
                     <p class="muted">Original monthly mortgage payments: £1923.06</p>
                     <p class="muted">Original monthly side pot payments: £300.00</p>
                 </div>
-                <p class="muted">Assuming rate of 2.62% initially and then 1.29% after four months</p>
+                <p class="muted">Assumes rate of 2.62% initially and then 1.29% after four months. Alternatively, please enter mortgage rate.</p>
                 <div class="valueInput">Enter current mortgage remaining: £<input id="value" type="number" value="0.00" onblur="validate(this)" step="500"></div>
                 <div class="valueInput">Enter monthly mortgage payments: £<input id="mortgagePaymentValue" type="number" value="0.00" onblur="validate(this)" step="50"></div>
                 <div class="valueInput">Enter monthly side pot payments: £<input id="sidePotPaymentValue" type="number" value="0.00" onblur="validate(this)" step="50"></div>
+                <div class="valueInput">Enter mortgage rate (optional): <input id="rateValue" type="number" placeholder="0.00" onblur="validate(this, true, true)" step="0.1">%</div>
                 <button onclick="reset();calculateMortgage()">Calculate</button>
                 <button onclick="reset()">Reset</button>
                 
