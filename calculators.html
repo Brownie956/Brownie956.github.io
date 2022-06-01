@@ -15,13 +15,18 @@
         <div class="calculators">
             <div id="mortgage_calculator" class="calculator">
                 <h1>Mortgage calculator</h1>
-
-                <form onsubmit="exampler()">
-                    Enter value: <input id="value" type="number">
-                    <input type="submit">
-                </form>
                 
-                <p id="mortgage_output"></p>
+                <p id="original">Original remaining value: £65789.53</p>
+                <p id="original">Original monthly mortgage payments: £1923.06</p>
+                <p id="original">Original monthly side pot payments: £300.00</p>
+                <div class="valueInput">Enter current mortgage remaining: £<input id="value" type="number" value="65789.53" onblur="validate(this)" step="500"></div>
+                <div class="valueInput">Enter monthly mortgage payments: £<input id="mortgagePaymentValue" type="number" value="1923.06" onblur="validate(this)" step="50"></div>
+                <div class="valueInput">Enter monthly side pot payments: £<input id="sidePotPaymentValue" type="number" value="300.00" onblur="validate(this)" step="50"></div>
+                <button onclick="calculateMortgage()">Calculate</button>
+                
+                <div id="mortgageOutputContainer">
+                    <div id="mortgage_output"></div>
+                </div>
             </div>
 
             <div id="student_calculator" class="calculator">

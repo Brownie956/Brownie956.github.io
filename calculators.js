@@ -32,8 +32,10 @@ function tailRecSL(value, runningTotal = 0) {
 }
 
 let totalInterest = 0
-function tailRecMortgage(value, runningTotal = 0, sidePot = 11000) {
-    console.log("***** MONTH: " + runningTotal);
+let mortgageValues = []
+function tailRecMortgage(value, runningTotal = 0, sidePot = 11000, monthlyPayment = 1923.06, sidePotPayment = 300) {
+    mortgageMonthValues = {}
+    mortgageMonthValues['month'] = runningTotal;
     value = (runningTotal % 12 == 0 && runningTotal > 0) ? value - 7500 : value
     if(value < sidePot) {
         return runningTotal;
@@ -42,28 +44,72 @@ function tailRecMortgage(value, runningTotal = 0, sidePot = 11000) {
         const rate = runningTotal > 4 ? 0.0129 : 0.0262
         const interest = (value * rate) / 12; //~2.62% atm
         totalInterest += interest;
-        console.log("Interest rate: ", rate);
-        console.log("Interest: ", interest);
-        console.log("Running total interest: ", totalInterest);
-        console.log("Value before interest: ", value);
-        console.log("Value after interest: ", value + interest);
-        console.log("Side pot: ", sidePot);
+        mortgageMonthValues['rate'] = rate;
+        mortgageMonthValues['interest'] = interest;
+        mortgageMonthValues['runningTotalInterest'] = totalInterest;
+        mortgageMonthValues['valueBeforeInterest'] = value;
+        mortgageMonthValues['valueAfterInterest'] = parseInt(value) + interest;
+        mortgageMonthValues['sidePot'] = sidePot
+        mortgageValues.push(mortgageMonthValues);
         return tailRecMortgage(
-            (value - 1923.06) + (interest),
+            (value - monthlyPayment) + (interest),
             runningTotal + 1,
-            sidePot + 300
+            sidePot + sidePotPayment
         )
     }
 }
 
-function example(value) {
-    return value + 1;
+function createNewParaLine(string, removeMargin = true) {
+    const para = document.createElement("p");
+    if(removeMargin) {
+        para.style.margin = "0px";
+    }
+    const node = document.createTextNode(string);
+    para.appendChild(node)
+    return para;
 }
 
-function exampler() {
-    let val = document.getElementById('value').value
+function calculateMortgage() {
+    const outputDiv = document.getElementById("mortgage_output");
+    let val = document.getElementById('value').value;
+    let mortgagePaymentsVal = parseFloat(document.getElementById('mortgagePaymentValue').value);
+    let sidePotPaymentsVal = parseFloat(document.getElementById('sidePotPaymentValue').value);
+    totalInterest = 0;
+    mortgageValues = [];
 
-    document.getElementById("mortgage_output").textContent = example(val);
+    let formatter = new Intl.NumberFormat('en-UK', {
+        style: 'currency',
+        currency: 'GBP'
+    });
+
+    const total = tailRecMortgage(val, 0, 11000, mortgagePaymentsVal, sidePotPaymentsVal);
+
+    let i;
+    for (i = 0; i < mortgageValues.length; i++) {
+        const month = createNewParaLine("***** MONTH: " + mortgageValues[i].month, false);
+        month.style.textDecoration = "underline";
+        outputDiv.appendChild(month);
+        outputDiv.appendChild(createNewParaLine("Interest rate: " + mortgageValues[i].rate + "%"));
+        outputDiv.appendChild(createNewParaLine("Interest: " + formatter.format(mortgageValues[i].interest)));
+        outputDiv.appendChild(createNewParaLine("Running total interest: " + formatter.format(mortgageValues[i].runningTotalInterest)));
+        outputDiv.appendChild(createNewParaLine("Value before interest: " + formatter.format(mortgageValues[i].valueBeforeInterest)));
+        outputDiv.appendChild(createNewParaLine("Value after interest: " + formatter.format(mortgageValues[i].valueAfterInterest)));
+        outputDiv.appendChild(createNewParaLine("Side pot: " + formatter.format(mortgageValues[i].sidePot)));
+    }
+    outputDiv.appendChild(createNewParaLine("***** TOTALS", false));
+    outputDiv.appendChild(createNewParaLine("Total months: " + total));
+    outputDiv.appendChild(createNewParaLine("Total years: " + (total / 12)));
+    outputDiv.appendChild(createNewParaLine("Total interest: " + formatter.format(totalInterest)));
+}
+
+function validate(input) {
+    console.log(input.value);
+    console.log(isNaN(input.value) || input.value == "");
+    if(isNaN(input.value) || input.value == "") {
+        input.value = "0.00";
+    } else {
+        input.value = parseFloat(input.value).toFixed(2);
+    }
 }
 
 // mortgage(80800);
@@ -74,11 +120,6 @@ function exampler() {
 // console.log("Tail Months: ", total);
 // console.log("Tail Years: ", total / 12);
 // console.log("Total Interest: ", totalInterest);
-
-const total = tailRecMortgage(65789.53);
-console.log("Tail Months: ", total);
-console.log("Tail Years: ", total / 12);
-console.log("Total Interest: ", totalInterest);
 
 // const totalSL = tailRecSL(46949.64);
 // console.log("Tail Months: ", totalSL);
