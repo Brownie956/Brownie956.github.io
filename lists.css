@@ -1,5 +1,6 @@
 .other-person {
     color: #0b802e;
+    display: none;
 }
 .person {
     background-color: #79c0ff;

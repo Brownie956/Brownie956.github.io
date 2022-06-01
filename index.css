@@ -7,3 +7,8 @@ div.contents {
 .contents-link {
     padding-bottom: 7px;
 }
+
+#adminButton {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
