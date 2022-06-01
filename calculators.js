@@ -115,12 +115,22 @@ function calculateMortgage() {
 }
 
 function validate(input) {
-    console.log(input.value);
-    console.log(isNaN(input.value) || input.value == "");
     if(isNaN(input.value) || input.value == "") {
         input.value = "0.00";
     } else {
         input.value = parseFloat(input.value).toFixed(2);
+    }
+}
+
+function openAdminPrompt() {
+    let password = prompt("Enter password");
+    if(password == "1") {
+        document.getElementById('value').value = "65789.53";
+        document.getElementById('mortgagePaymentValue').value = "1923.06";
+        document.getElementById('sidePotPaymentValue').value = "300.00";
+        document.getElementById('original').style.display = "block";
+    } else {
+        alert("Wrong password");
     }
 }
 

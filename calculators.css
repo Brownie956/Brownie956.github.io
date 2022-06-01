@@ -6,11 +6,20 @@ div#mortgageOutput p {
     margin: 0px;
 }
 
-p#original {
+div#original {
+    display: none;
+}
+
+p.muted {
     color: grey;
     font-style: italic;
 }
 
 .valueInput {
     margin-bottom: 4px;
+}
+
+#adminButton {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
