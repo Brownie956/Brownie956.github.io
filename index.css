@@ -1,5 +1,9 @@
-div.links {
+div.contents {
     border-width: 0px 0px 1px 0px;
     border-style: solid;
     padding-bottom: 10px;
+}
+
+.contents-link {
+    padding-bottom: 7px;
 }

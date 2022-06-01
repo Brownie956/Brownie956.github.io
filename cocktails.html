@@ -4,13 +4,13 @@
         <title>Cocktails recipes</title>
 		<link rel="stylesheet" href="index.css">
 		<link rel="stylesheet" href="lists.css">
-        <link rel="stylesheet" href="accordion.js">
-        <!-- <script src="accordion.js"></script> -->
+        <link rel="stylesheet" href="accordion.css">
     </head>
     <body>
-        <div class="links">
-			<h1>Links</h1>
-			<a href="index.html">Home</a>
+        <div class="contents">
+			<ul>
+                <li class="contents-link"><a href="index.html">Home</a></li>
+            </ul>
 		</div>
 
         <h1>Cocktails</h1>
@@ -18,39 +18,95 @@
         <div class="panel">
             <h2>Ingredients</h2>
             <ul>
-                <li>Vodka</li>
-                <li>Kaluha</li>
-                <li>Coffee</li>
-                <li>Sugar</li>
+                <li>2 parts Vodka</li>
+                <li>1 part Kaluha</li>
+                <li>1 part Coffee</li>
+                <li>1 tbsp Sugar</li>
                 <li>Ice</li>
             </ul>
             <h2>Steps</h2>
             <ol>
-                <li>Do this</li>
-                <li>Then this</li>
-                <li>And finally this</li>
+                <li>Put all in a shaker</li>
+                <li>Shake</li>
+                <li>Serve</li>
             </ol>
         </div>
 
-        <script>
-            var acc = document.getElementsByClassName("accordion");
-            var i;
+        <button class="accordion">Mojito (Rum + Mint)</button>
+        <div class="panel">
+            <h2>Ingredients</h2>
+            <ul>
+                <li>3 parts White rum</li>
+                <li>1 part Soda water</li>
+                <li>Handful of Mint</li>
+                <li>1 Lime</li>
+                <li>1 tsp Sugar</li>
+                <li>Ice</li>
+            </ul>
+            <h2>Steps</h2>
+            <ol>
+                <li>Crush lime slices, sugar and mint</li>
+                <li>Add ice</li>
+                <li>Add rum</li>
+                <li>Top up with soda water</li>
+                <li>Mix (and garnish with a lime slice)</li>
+            </ol>
+        </div>
 
-            for (i = 0; i < acc.length; i++) {
-            acc[i].addEventListener("click", function() {
-                /* Toggle between adding and removing the "active" class,
-                to highlight the button that controls the panel */
-                this.classList.toggle("active");
+        <button class="accordion">Piña colada (Rum + Coconut)</button>
+        <div class="panel">
+            <h2>Ingredients</h2>
+            <ul>
+                <li>1 part White rum</li>
+                <li>1 part Coconut cream</li>
+                <li>2 parts Pineapple juice</li>
+                <li>Ice</li>
+                <li>Wedge of pineapple (garnish)</li>
+            </ul>
+            <h2>Steps</h2>
+            <ol>
+                <li>Put all ingredients in a blender</li>
+                <li>Serve with garnish</li>
+            </ol>
+        </div>
 
-                /* Toggle between hiding and showing the active panel */
-                var panel = this.nextElementSibling;
-                if (panel.style.maxHeight) {
-                    panel.style.maxHeight = null;
-                } else {
-                    panel.style.maxHeight = panel.scrollHeight + "px";
-                }
-            });
-            }
-        </script>
+        <button class="accordion">Woo woo (Vodka + Cranberry + Peach)</button>
+        <div class="panel">
+            <h2>Ingredients</h2>
+            <ul>
+                <li>2 parts Vodka</li>
+                <li>1 part Peach schnapps</li>
+                <li>4 parts Cranberry juice</li>
+                <li>A few drops of Lime juice</li>
+                <li>Ice</li>
+                <li>Wedge of lime (garnish)</li>
+            </ul>
+            <h2>Steps</h2>
+            <ol>
+                <li>Put all ingredients in a shaker</li>
+                <li>Serve onto more ice</li>
+                <li>Garnish with wedge of lime</li>
+            </ol>
+        </div>
+
+        <button class="accordion">Frozen margarita (Tequila + Lime)</button>
+        <div class="panel">
+            <h2>Ingredients</h2>
+            <ul>
+                <li>2 parts Tequila</li>
+                <li>1 part Triple sec</li>
+                <li>1 part Lime juice</li>
+                <li>Sugar (syrup)</li>
+                <li>Ice</li>
+                <li>Wedge of lime (garnish)</li>
+            </ul>
+            <h2>Steps</h2>
+            <ol>
+                <li>Put all ingredients in a blender</li>
+                <li>Server with garnish</li>
+            </ol>
+        </div>
+
+        <script src="accordion.js"></script>
     </body>
 </html>

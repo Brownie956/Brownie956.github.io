@@ -39,7 +39,7 @@ function tailRecMortgage(value, runningTotal = 0, sidePot = 11000) {
         return runningTotal;
     }
     else {
-        const rate = 0.0262
+        const rate = runningTotal > 4 ? 0.0129 : 0.0262
         const interest = (value * rate) / 12; //~2.62% atm
         totalInterest += interest;
         console.log("Interest rate: ", rate);
@@ -49,7 +49,7 @@ function tailRecMortgage(value, runningTotal = 0, sidePot = 11000) {
         console.log("Value after interest: ", value + interest);
         console.log("Side pot: ", sidePot);
         return tailRecMortgage(
-            (value - 3023.06) + (interest),
+            (value - 1923.06) + (interest),
             runningTotal + 1,
             sidePot + 300
         )
