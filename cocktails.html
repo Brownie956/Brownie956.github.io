@@ -5,7 +5,7 @@
 		<link rel="stylesheet" href="index.css">
 		<link rel="stylesheet" href="lists.css">
         <link rel="stylesheet" href="accordion.js">
-        <script src="accordion.js"></script>
+        <!-- <script src="accordion.js"></script> -->
     </head>
     <body>
         <div class="links">
@@ -31,5 +31,26 @@
                 <li>And finally this</li>
             </ol>
         </div>
+
+        <script>
+            var acc = document.getElementsByClassName("accordion");
+            var i;
+
+            for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                /* Toggle between adding and removing the "active" class,
+                to highlight the button that controls the panel */
+                this.classList.toggle("active");
+
+                /* Toggle between hiding and showing the active panel */
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
+            }
+        </script>
     </body>
 </html>
