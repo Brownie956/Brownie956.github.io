@@ -54,7 +54,9 @@ function tailRecMortgage(value, runningTotal = 0, sidePot = 11000, monthlyPaymen
         return tailRecMortgage(
             (value - monthlyPayment) + (interest),
             runningTotal + 1,
-            sidePot + sidePotPayment
+            sidePot + sidePotPayment,
+            monthlyPayment,
+            sidePotPayment
         )
     }
 }
