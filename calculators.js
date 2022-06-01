@@ -65,8 +65,18 @@ function createNewParaLine(string, removeMargin = true) {
         para.style.margin = "0px";
     }
     const node = document.createTextNode(string);
-    para.appendChild(node)
+    para.appendChild(node);
     return para;
+}
+
+function reset() {
+    const outputContainer = document.getElementById("mortgageOutputContainer");
+    const outputDiv = document.getElementById("mortgage_output");
+    outputDiv.remove();
+
+    const div = document.createElement("div");
+    div.id = "mortgage_output";
+    outputContainer.appendChild(div);
 }
 
 function calculateMortgage() {
