@@ -7,13 +7,18 @@
         <link rel="stylesheet" href="accordion.css">
     </head>
     <body>
-        <div class="contents">
+		<div class="contents">
 			<ul>
-                <li class="contents-link"><a href="index.html">Home</a></li>
-            </ul>
+				<li><a class="contents-link" href="index.html">Home</a></li>
+				<li><a class="contents-link" href="calculators.html">Calculators</a></li>
+				<li><a class="contents-link" href="cocktails.html">Cocktails</a></li>
+				<li><a class="contents-link" href="food.html">Food</a></li>
+				<li><button id="admin-button" class="contents-link disabled" onclick="openAdminPrompt()" disabled>Admin</button></li>
+			</ul>
 		</div>
 
         <h1>Cocktails</h1>
+        <p>Click to show ingredients and steps</p>
         <button class="accordion">Espresso Martini (Vodka + Coffee)</button>
         <div class="panel">
             <h2>Ingredients</h2>
