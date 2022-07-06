@@ -45,7 +45,7 @@ function tailRecMortgage(value, runningTotal = 0, sidePot = 11000, monthlyPaymen
         if(rateOverride >= 0) {
             rate = rateOverride / 100;
         } else {
-            rate = runningTotal > 4 ? 0.0129 : 0.0262;
+            rate = runningTotal > 2 ? 0.02 : 0.0262;
         }
         const interest = (value * rate) / 12; //~2.62% atm
         totalInterest += interest;
@@ -137,8 +137,8 @@ function validate(input, resetOnFail = true, clearOnFail = false) {
 function openAdminPrompt() {
     let password = prompt("Enter password");
     if(password == "1") {
-        document.getElementById('value').value = "65789.53";
-        document.getElementById('mortgagePaymentValue').value = "1923.06";
+        document.getElementById('value').value = "64027.55";
+        document.getElementById('mortgagePaymentValue').value = "1023.06";
         document.getElementById('sidePotPaymentValue').value = "300.00";
         document.getElementById('original').style.display = "block";
     } else {
