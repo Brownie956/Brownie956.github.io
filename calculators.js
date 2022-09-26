@@ -33,7 +33,7 @@ function tailRecSL(value, runningTotal = 0) {
 
 let totalInterest = 0
 let mortgageValues = []
-function tailRecMortgage(value, runningTotal = 0, sidePot = 11000, monthlyPayment = 1923.06, sidePotPayment = 300, rateOverride = -1) {
+function tailRecMortgage(value, runningTotal = 0, sidePot = 11000, monthlyPayment = 1023.06, sidePotPayment = 300, rateOverride = -1) {
     mortgageMonthValues = {}
     mortgageMonthValues['month'] = runningTotal;
     value = (runningTotal % 12 == 0 && runningTotal > 0) ? value - 7500 : value
@@ -45,7 +45,7 @@ function tailRecMortgage(value, runningTotal = 0, sidePot = 11000, monthlyPaymen
         if(rateOverride >= 0) {
             rate = rateOverride / 100;
         } else {
-            rate = runningTotal > 2 ? 0.02 : 0.0262;
+            rate = 0.045;
         }
         const interest = (value * rate) / 12; //~2.62% atm
         totalInterest += interest;
