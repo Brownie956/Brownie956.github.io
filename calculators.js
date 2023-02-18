@@ -33,7 +33,7 @@ function tailRecSL(value, runningTotal = 0) {
 
 let totalInterest = 0
 let mortgageValues = []
-function tailRecMortgage(value, runningTotal = 0, sidePot = 11000, monthlyPayment = 1023.06, sidePotPayment = 300, rateOverride = -1) {
+function tailRecMortgage(value, runningTotal = 0, sidePot = 11000, monthlyPayment = 1800, sidePotPayment = 300, rateOverride = -1) {
     mortgageMonthValues = {}
     mortgageMonthValues['month'] = runningTotal;
     value = (runningTotal % 12 == 0 && runningTotal > 0) ? value - 7500 : value
@@ -47,7 +47,7 @@ function tailRecMortgage(value, runningTotal = 0, sidePot = 11000, monthlyPaymen
         } else {
             rate = 0.045;
         }
-        const interest = (value * rate) / 12; //~2.62% atm
+        const interest = (value * rate) / 12;
         totalInterest += interest;
         mortgageMonthValues['rate'] = rate;
         mortgageMonthValues['interest'] = interest;
@@ -137,8 +137,8 @@ function validate(input, resetOnFail = true, clearOnFail = false) {
 function openAdminPrompt() {
     let password = prompt("Enter password");
     if(password == "1") {
-        document.getElementById('value').value = "64027.55";
-        document.getElementById('mortgagePaymentValue').value = "1023.06";
+        document.getElementById('value').value = "59022.54";
+        document.getElementById('mortgagePaymentValue').value = "1800";
         document.getElementById('sidePotPaymentValue').value = "300.00";
         document.getElementById('original').style.display = "block";
     } else {
