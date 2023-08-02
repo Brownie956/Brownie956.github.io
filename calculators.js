@@ -45,7 +45,7 @@ function tailRecMortgage(value, runningTotal = 0, sidePot = 11000, monthlyPaymen
         if(rateOverride >= 0) {
             rate = rateOverride / 100;
         } else {
-            rate = 0.045;
+            rate = 0.0659;
         }
         const interest = (value * rate) / 12;
         totalInterest += interest;
@@ -145,17 +145,3 @@ function openAdminPrompt() {
         alert("Wrong password");
     }
 }
-
-// mortgage(80800);
-// console.log("Months: ", count);
-// console.log("Years: ", count / 12);
-
-// const total = tailRecMortgage(68007.68 + 46949.64);
-// console.log("Tail Months: ", total);
-// console.log("Tail Years: ", total / 12);
-// console.log("Total Interest: ", totalInterest);
-
-// const totalSL = tailRecSL(46949.64);
-// console.log("Tail Months: ", totalSL);
-// console.log("Tail Years: ", totalSL / 12);
-// console.log("Total Interest: ", totalInterestSL);
