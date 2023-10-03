@@ -91,6 +91,7 @@ function calculateMortgage() {
     const outputDiv = document.getElementById("mortgage_output");
     let val = document.getElementById('value').value;
     let mortgagePaymentsVal = parseFloat(document.getElementById('mortgagePaymentValue').value);
+    let sidePotStartVal = parseFloat(document.getElementById('sidePotStartValue').value);
     let sidePotPaymentsVal = parseFloat(document.getElementById('sidePotPaymentValue').value);
     let rateOverrideVal = document.getElementById('rateValue').value;
     rateOverrideVal = rateOverrideVal != "" && !isNaN(rateOverrideVal) ? parseFloat(rateOverrideVal) : -1;
@@ -102,7 +103,7 @@ function calculateMortgage() {
         currency: 'GBP'
     });
 
-    const total = tailRecMortgage(val, 0, 11000, mortgagePaymentsVal, sidePotPaymentsVal, rateOverrideVal);
+    const total = tailRecMortgage(val, 0, sidePotStartVal, mortgagePaymentsVal, sidePotPaymentsVal, rateOverrideVal);
 
     outputDiv.appendChild(createNewParaLine("***** TOTALS", false));
     outputDiv.appendChild(createNewParaLine("Total months: " + total));
@@ -138,9 +139,11 @@ function validate(input, resetOnFail = true, clearOnFail = false) {
 function openAdminPrompt() {
     let password = prompt("Enter password");
     if(password == "1") {
-        document.getElementById('value').value = "49650.09";
+        document.getElementById('value').value = "46607.29";
         document.getElementById('mortgagePaymentValue').value = "1800";
+        document.getElementById('sidePotStartValue').value = "11000.00";
         document.getElementById('sidePotPaymentValue').value = "300.00";
+        document.getElementById('rateValue').value = "6.84";
         document.getElementById('original').style.display = "block";
     } else {
         alert("Wrong password");
