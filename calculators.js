@@ -104,22 +104,23 @@ function calculateMortgage() {
 
     const total = tailRecMortgage(val, 0, 11000, mortgagePaymentsVal, sidePotPaymentsVal, rateOverrideVal);
 
+    outputDiv.appendChild(createNewParaLine("***** TOTALS", false));
+    outputDiv.appendChild(createNewParaLine("Total months: " + total));
+    outputDiv.appendChild(createNewParaLine("Total years: " + (total / 12)));
+    outputDiv.appendChild(createNewParaLine("Total interest: " + formatter.format(totalInterest)));
+    
     let i;
     for (i = 0; i < mortgageValues.length; i++) {
         const month = createNewParaLine("***** MONTH: " + mortgageValues[i].month, false);
         month.style.textDecoration = "underline";
         outputDiv.appendChild(month);
-        outputDiv.appendChild(createNewParaLine("Interest rate: " + mortgageValues[i].rate + "%"));
+        outputDiv.appendChild(createNewParaLine("Interest rate: " + (mortgageValues[i].rate * 100) + "%"));
         outputDiv.appendChild(createNewParaLine("Interest: " + formatter.format(mortgageValues[i].interest)));
         outputDiv.appendChild(createNewParaLine("Running total interest: " + formatter.format(mortgageValues[i].runningTotalInterest)));
         outputDiv.appendChild(createNewParaLine("Value before interest: " + formatter.format(mortgageValues[i].valueBeforeInterest)));
         outputDiv.appendChild(createNewParaLine("Value after interest: " + formatter.format(mortgageValues[i].valueAfterInterest)));
         outputDiv.appendChild(createNewParaLine("Side pot: " + formatter.format(mortgageValues[i].sidePot)));
     }
-    outputDiv.appendChild(createNewParaLine("***** TOTALS", false));
-    outputDiv.appendChild(createNewParaLine("Total months: " + total));
-    outputDiv.appendChild(createNewParaLine("Total years: " + (total / 12)));
-    outputDiv.appendChild(createNewParaLine("Total interest: " + formatter.format(totalInterest)));
 }
 
 function validate(input, resetOnFail = true, clearOnFail = false) {
