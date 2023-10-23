@@ -111,9 +111,14 @@ function calculateMortgage() {
     outputDiv.appendChild(createNewParaLine("Total interest: " + formatter.format(totalInterest)));
     
     let i;
+    const today = new Date();
     for (i = 0; i < mortgageValues.length; i++) {
-        const month = createNewParaLine("***** MONTH: " + mortgageValues[i].month, false);
+        const adjustedDate = new Date(today);
+        adjustedDate.setMonth(today.getMonth() + mortgageValues[i].month);
+        const formattedMonth = Intl.DateTimeFormat("en-UK", { month: "long", year: "numeric" }).format(adjustedDate);
+        const month = createNewParaLine("***** " + formattedMonth, false);
         month.style.textDecoration = "underline";
+
         outputDiv.appendChild(month);
         outputDiv.appendChild(createNewParaLine("Interest rate: " + (mortgageValues[i].rate * 100) + "%"));
         outputDiv.appendChild(createNewParaLine("Interest: " + formatter.format(mortgageValues[i].interest)));
