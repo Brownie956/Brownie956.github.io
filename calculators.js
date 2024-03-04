@@ -144,7 +144,7 @@ function validate(input, resetOnFail = true, clearOnFail = false) {
 function openAdminPrompt() {
     let password = prompt("Enter password");
     if(password == "1") {
-        document.getElementById('value').value = "42077.11";
+        document.getElementById('value').value = "38844.70";
         document.getElementById('mortgagePaymentValue').value = "1800";
         document.getElementById('sidePotStartValue').value = "11000.00";
         document.getElementById('sidePotPaymentValue').value = "300.00";
