@@ -47,3 +47,9 @@ a.contents-link:hover {
 .contents-link.disabled {
     background-color: #dadada !important;
 }
+
+@media only screen and (max-width: 517px) {
+    .contents li {
+      margin-bottom: 20px;
+    }
+}
